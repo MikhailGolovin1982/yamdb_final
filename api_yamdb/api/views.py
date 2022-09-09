@@ -1,33 +1,26 @@
-from rest_framework.pagination import PageNumberPagination
 from django.core.mail import send_mail
 from django.core.management.utils import get_random_secret_key
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
-from rest_framework import filters
-from rest_framework import status, viewsets, mixins
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, mixins, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.pagination import (LimitOffsetPagination,
+                                       PageNumberPagination)
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.pagination import LimitOffsetPagination
-from .permissions import AdminOrReadOnly
-from .permissions import (IsAdmin,
-                          IsOwner,
-                          IsReviewPerm,
-                          IsAuthorModeratorOrReadOnly)
-from .serializers import (ConfirmSerializer,
-                          EmailSerializer,
-                          UserSerializer,
-                          UserSerializerSimpleUser,
-                          GenresSerializer,
-                          CategoriesSerializer,
-                          CommentSerializer,
-                          ReviewSerializer,
-                          TitlesSerializer,
-                          TitlesCreateSerializer,)
-from reviews.models import Review, Title, Genres, User, Categories
-from django.db.models import Avg
+
+from reviews.models import Categories, Genres, Review, Title, User
+
 from .filter import TitleFilter
+from .permissions import (AdminOrReadOnly, IsAdmin,
+                          IsAuthorModeratorOrReadOnly, IsOwner, IsReviewPerm)
+from .serializers import (CategoriesSerializer, CommentSerializer,
+                          ConfirmSerializer, EmailSerializer, GenresSerializer,
+                          ReviewSerializer, TitlesCreateSerializer,
+                          TitlesSerializer, UserSerializer,
+                          UserSerializerSimpleUser)
 
 RESTRICTED_USERNAMES = [
     'me',
