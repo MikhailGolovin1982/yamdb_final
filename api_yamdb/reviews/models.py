@@ -105,7 +105,7 @@ class Title(models.Model):
     genre = models.ManyToManyField(
         Genres,
         related_name='genres',
-        through="Genre_title",
+        through="GenreTitle",
         verbose_name="Жанр произведения",
         help_text="Жанр произведения",
     )
