@@ -1,6 +1,6 @@
 # Проект YaMDb  
 
-![Deploy_badge] (https://github.com/MikhailGolovin1982/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![статус сборки](https://github.com/MikhailGolovin1982/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?event=push)
 
 ## Проект YaMDb собирает отзывы (Review) пользователей на произведения (Titles).  
 
@@ -30,7 +30,7 @@
 
 На одно произведение пользователь может оставить только один отзыв.  
 
-Примеры: Все примеры обращения описаны на  http://127.0.0.1:8000/redoc/  
+Примеры: Все примеры обращения описаны на http://51.250.30.86/redoc/  
 
 Некоторые примеры запросов к API:  
 
@@ -82,7 +82,7 @@
 
 ```bash 
 
-git clone git@github.com:MikhailGolovin1982/infra_sp2.git 
+git clone git@github.com:MikhailGolovin1982/yamdb_final.git 
 
 ``` 
 
@@ -104,7 +104,7 @@ git clone git@github.com:MikhailGolovin1982/infra_sp2.git
 
 ```bash 
 
-cd infra_sp2/infra/ 
+cd yamdb_final/infra/ 
 
 ``` 
 
@@ -158,6 +158,7 @@ docker-compose up
 
 ```bash 
 
+docker-compose exec web python manage.py makemigrations
 docker-compose exec web python manage.py migrate 
 
 ``` 
@@ -285,8 +286,6 @@ ALLOWED_HOSTS = <разрешенные хосты>
  
 
 Для переменной ALLOWED_HOSTS ожидается список разрешенных хостов с симолом ',' - в качестве разделителя 
-
- 
 
  
 
