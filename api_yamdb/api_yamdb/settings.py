@@ -8,7 +8,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='12345')
 
 DEBUG = strtobool(os.getenv('DEBUG', default='False'))
 
-ALLOWED_HOSTS = list(os.getenv('ALLOWED_HOSTS', default='127.0.0.1').split(','))
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='127.0.0.1').split(',')
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
